@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView x:Class="SafeCampus.Controls.BottomNavBar"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SafeCampus.Controls">
+    <Grid BackgroundColor="White" HeightRequest="62" RowDefinitions="1.5,*" ColumnDefinitions="*,*,*,*,*">
+
+        <BoxView Grid.ColumnSpan="5" Color="{StaticResource Line}" HeightRequest="1.5" />
+
+        <!-- Accueil -->
+        <Grid Grid.Row="1" Grid.Column="0" ClassId="home" RowDefinitions="3,*">
+            <BoxView x:Name="BarHome" HeightRequest="3" WidthRequest="48" CornerRadius="2" VerticalOptions="Start" HorizontalOptions="Center" Color="Transparent" />
+            <VerticalStackLayout Grid.Row="1" Spacing="3" VerticalOptions="Center" HorizontalOptions="Center">
+                <controls:IconView x:Name="IcoHome" Kind="home" Size="22" />
+                <Label x:Name="LblHome" Text="Accueil" FontSize="11" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+            <Grid.GestureRecognizers><TapGestureRecognizer Tapped="OnTabTapped" /></Grid.GestureRecognizers>
+        </Grid>
+
+        <!-- Carte -->
+        <Grid Grid.Row="1" Grid.Column="1" ClassId="map" RowDefinitions="3,*">
+            <BoxView x:Name="BarMap" HeightRequest="3" WidthRequest="48" CornerRadius="2" VerticalOptions="Start" HorizontalOptions="Center" Color="Transparent" />
+            <VerticalStackLayout Grid.Row="1" Spacing="3" VerticalOptions="Center" HorizontalOptions="Center">
+                <controls:IconView x:Name="IcoMap" Kind="map" Size="22" />
+                <Label x:Name="LblMap" Text="Carte" FontSize="11" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+            <Grid.GestureRecognizers><TapGestureRecognizer Tapped="OnTabTapped" /></Grid.GestureRecognizers>
+        </Grid>
+
+        <!-- Signalements -->
+        <Grid Grid.Row="1" Grid.Column="2" ClassId="tracking" RowDefinitions="3,*">
+            <BoxView x:Name="BarTracking" HeightRequest="3" WidthRequest="48" CornerRadius="2" VerticalOptions="Start" HorizontalOptions="Center" Color="Transparent" />
+            <VerticalStackLayout Grid.Row="1" Spacing="3" VerticalOptions="Center" HorizontalOptions="Center">
+                <controls:IconView x:Name="IcoTracking" Kind="alert" Size="22" />
+                <Label x:Name="LblTracking" Text="Signalements" FontSize="11" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+            <Grid.GestureRecognizers><TapGestureRecognizer Tapped="OnTabTapped" /></Grid.GestureRecognizers>
+        </Grid>
+
+        <!-- Contacts -->
+        <Grid Grid.Row="1" Grid.Column="3" ClassId="contacts" RowDefinitions="3,*">
+            <BoxView x:Name="BarContacts" HeightRequest="3" WidthRequest="48" CornerRadius="2" VerticalOptions="Start" HorizontalOptions="Center" Color="Transparent" />
+            <VerticalStackLayout Grid.Row="1" Spacing="3" VerticalOptions="Center" HorizontalOptions="Center">
+                <controls:IconView x:Name="IcoContacts" Kind="phone" Size="22" />
+                <Label x:Name="LblContacts" Text="Contacts" FontSize="11" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+            <Grid.GestureRecognizers><TapGestureRecognizer Tapped="OnTabTapped" /></Grid.GestureRecognizers>
+        </Grid>
+
+        <!-- Profil -->
+        <Grid Grid.Row="1" Grid.Column="4" ClassId="profile" RowDefinitions="3,*">
+            <BoxView x:Name="BarProfile" HeightRequest="3" WidthRequest="48" CornerRadius="2" VerticalOptions="Start" HorizontalOptions="Center" Color="Transparent" />
+            <VerticalStackLayout Grid.Row="1" Spacing="3" VerticalOptions="Center" HorizontalOptions="Center">
+                <controls:IconView x:Name="IcoProfile" Kind="user" Size="22" />
+                <Label x:Name="LblProfile" Text="Profil" FontSize="11" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+            <Grid.GestureRecognizers><TapGestureRecognizer Tapped="OnTabTapped" /></Grid.GestureRecognizers>
+        </Grid>
+    </Grid>
+</ContentView>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Color x:Key="Navy">#0F172A</Color>
+    <Color x:Key="Slate">#64748B</Color>
+    <Color x:Key="SlateDark">#334155</Color>
+    <Color x:Key="Line">#E2E8F0</Color>
+    <Color x:Key="Bg">#F8FAFC</Color>
+
+    <Color x:Key="Blue">#2563EB</Color>
+    <Color x:Key="BlueLight">#EFF6FF</Color>
+    <Color x:Key="BlueSoft">#DBEAFE</Color>
+
+    <Color x:Key="Red">#DC2626</Color>
+    <Color x:Key="RedLight">#FEF2F2</Color>
+    <Color x:Key="RedLine">#F3D6D6</Color>
+
+    <Color x:Key="Green">#16A34A</Color>
+    <Color x:Key="GreenLight">#ECFDF5</Color>
+
+    <Color x:Key="Orange">#B45309</Color>
+    <Color x:Key="OrangeLight">#FFF7ED</Color>
+    <Color x:Key="Amber">#F59E0B</Color>
+
+    <Color x:Key="MapBg">#E7EDE3</Color>
+    <Color x:Key="MapRoad">#C3D0BE</Color>
+    <Color x:Key="BuildingFill">#F6F8F4</Color>
+    <Color x:Key="BuildingLine">#9CB09C</Color>
+    <Color x:Key="CheckGrey">#CBD5E1</Color>
+
+</ResourceDictionary>

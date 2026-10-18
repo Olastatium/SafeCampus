@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SafeCampus.Views.ReportPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SafeCampus.Controls"
+             Title="Signaler un incident">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <controls:PageHeader Title="Signaler un incident" ShowBack="True" ShowBell="False"
+                             BackRoute="//home" Padding="0,10,0,14" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="22,6,22,24" Spacing="0">
+
+                <Label Text="Décrivez la situation" Style="{StaticResource H2}" />
+                <Label Text="Les informations essentielles seront transmises&#10;au service de sécurité."
+                       Style="{StaticResource Muted}" Margin="0,2,0,0" />
+
+                <!-- Type d'incident -->
+                <Label Text="Type d’incident" Style="{StaticResource Caption}" Margin="0,18,0,6" />
+                <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="8">
+                    <Border x:Name="TypeVol" Style="{StaticResource Card}" StrokeShape="RoundRectangle 14" HeightRequest="42">
+                        <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnTypeTapped" /></Border.GestureRecognizers>
+                        <Label Text="Vol" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                    <Border x:Name="TypeAccident" Grid.Column="1" Style="{StaticResource Card}" StrokeShape="RoundRectangle 14" HeightRequest="42">
+                        <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnTypeTapped" /></Border.GestureRecognizers>
+                        <Label Text="Accident" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                    <Border x:Name="TypeViolence" Grid.Column="2" Style="{StaticResource Card}" StrokeShape="RoundRectangle 14" HeightRequest="42">
+                        <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnTypeTapped" /></Border.GestureRecognizers>
+                        <Label Text="Violence" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                    <Border x:Name="TypeAutre" Grid.Column="3" Style="{StaticResource Card}" StrokeShape="RoundRectangle 14" HeightRequest="42">
+                        <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnTypeTapped" /></Border.GestureRecognizers>
+                        <Label Text="Autre" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                </Grid>
+
+                <!-- Description -->
+                <Label Text="Description" Style="{StaticResource Caption}" Margin="0,16,0,6" />
+                <Border Style="{StaticResource InputBorder}" HeightRequest="96" Padding="14,6">
+                    <Editor Text="Vol signalé près du Bloc B" FontSize="15" TextColor="{StaticResource SlateDark}"
+                            BackgroundColor="Transparent" AutoSize="Disabled" />
+                </Border>
+
+                <!-- Niveau de gravité -->
+                <Label Text="Niveau de gravité" Style="{StaticResource Caption}" Margin="0,16,0,6" />
+                <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="8">
+                    <Border x:Name="SevFaible" Style="{StaticResource Card}" StrokeShape="RoundRectangle 14" HeightRequest="42">
+                        <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnSeverityTapped" /></Border.GestureRecognizers>
+                        <Label Text="Faible" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                    <Border x:Name="SevModere" Grid.Column="1" Style="{StaticResource Card}" StrokeShape="RoundRectangle 14" HeightRequest="42">
+                        <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnSeverityTapped" /></Border.GestureRecognizers>
+                        <Label Text="Modéré" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                    <Border x:Name="SevEleve" Grid.Column="2" Style="{StaticResource Card}" StrokeShape="RoundRectangle 14" HeightRequest="42">
+                        <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnSeverityTapped" /></Border.GestureRecognizers>
+                        <Label Text="Élevé" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                    <Border x:Name="SevCritique" Grid.Column="3" Style="{StaticResource Card}" StrokeShape="RoundRectangle 14" HeightRequest="42">
+                        <Border.GestureRecognizers><TapGestureRecognizer Tapped="OnSeverityTapped" /></Border.GestureRecognizers>
+                        <Label Text="Critique" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                </Grid>
+
+                <!-- Localisation détectée -->
+                <Label Text="Localisation détectée" Style="{StaticResource Caption}" Margin="0,16,0,6" />
+                <Border Style="{StaticResource Card}" Padding="14,12" StrokeShape="RoundRectangle 14">
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                        <Border WidthRequest="38" HeightRequest="38" BackgroundColor="{StaticResource BlueLight}"
+                                StrokeThickness="0" StrokeShape="RoundRectangle 12" VerticalOptions="Center">
+                            <controls:IconView Kind="pin" Size="20" IconColor="{StaticResource Blue}" />
+                        </Border>
+                        <Label Grid.Column="1" Text="Bloc B - Campus principal" FontSize="15" FontAttributes="Bold"
+                               TextColor="{StaticResource Navy}" VerticalOptions="Center" />
+                        <Border Grid.Column="2" Style="{StaticResource Pill}" BackgroundColor="{StaticResource GreenLight}"
+                                Padding="12,6" VerticalOptions="Center">
+                            <Label Text="PRÉCISE" Style="{StaticResource BadgeText}" TextColor="{StaticResource Green}" />
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!-- Photo -->
+                <Border BackgroundColor="White" Stroke="{StaticResource CheckGrey}" StrokeThickness="1.5"
+                        StrokeDashArray="4,3" StrokeShape="RoundRectangle 14" Padding="14,14" Margin="0,16,0,0">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnPhotoTapped" />
+                    </Border.GestureRecognizers>
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                        <Border WidthRequest="40" HeightRequest="40" BackgroundColor="{StaticResource Bg}"
+                                StrokeThickness="0" StrokeShape="RoundRectangle 12" VerticalOptions="Center">
+                            <controls:IconView Kind="camera" Size="20" IconColor="{StaticResource Slate}" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="1">
+                            <Label Text="Ajouter une photo (facultatif)" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource Navy}" />
+                            <Label Text="JPG, PNG - taille optimisée" FontSize="12" TextColor="{StaticResource Slate}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Button Text="Envoyer le signalement" Style="{StaticResource PrimaryButton}"
+                        Margin="0,22,0,0" Clicked="OnSendClicked" />
+
+                <Label Text="Les données servent uniquement au traitement&#10;et au suivi de votre signalement."
+                       FontSize="12" TextColor="{StaticResource Slate}" HorizontalTextAlignment="Center" Margin="0,16,0,0" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

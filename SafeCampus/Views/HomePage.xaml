@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SafeCampus.Views.HomePage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SafeCampus.Controls"
+             Title="Accueil">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <controls:PageHeader Title="Bonjour, Ntamacko"
+                             Subtitle="Votre sécurité commence ici."
+                             Tag="Localisation activée" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="22,18,22,20" Spacing="14">
+
+                <!-- Carte ALERTE -->
+                <Border Style="{StaticResource Card}" StrokeShape="RoundRectangle 20" HeightRequest="219">
+                    <Border BackgroundColor="{StaticResource RedLight}" StrokeThickness="0"
+                            StrokeShape="RoundRectangle 28" Margin="14,32,14,0"
+                            VerticalOptions="Start" Padding="22,18">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnNavigate" CommandParameter="//confirmation" />
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="18">
+                            <Border WidthRequest="68" HeightRequest="68" BackgroundColor="{StaticResource Red}"
+                                    StrokeThickness="0" StrokeShape="RoundRectangle 34" VerticalOptions="Center">
+                                <controls:IconView Kind="alert" Size="30" IconColor="White" />
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                <Label Text="ALERTE" FontSize="25" FontAttributes="Bold" TextColor="{StaticResource Red}" />
+                                <Label Text="Besoin d’aide immédiate ?" FontSize="14" TextColor="{StaticResource Slate}" />
+                                <Label Text="Appuyez pour confirmer avant envoi." FontSize="11.5" TextColor="{StaticResource Slate}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </Border>
+
+                <Label Text="Actions rapides" FontSize="18" FontAttributes="Bold"
+                       TextColor="{StaticResource Navy}" HorizontalTextAlignment="Center" Margin="0,2,0,0" />
+
+                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+
+                    <Border Style="{StaticResource Card}" Padding="12" HeightRequest="76">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnNavigate" CommandParameter="//report" />
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Border WidthRequest="40" HeightRequest="40" BackgroundColor="{StaticResource RedLight}"
+                                    StrokeThickness="0" StrokeShape="RoundRectangle 12" VerticalOptions="Center">
+                                <controls:IconView Kind="alert" Size="20" IconColor="{StaticResource Red}" />
+                            </Border>
+                            <Label Grid.Column="1" Text="Signaler&#10;un incident" Style="{StaticResource CardTitle}" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Column="1" Style="{StaticResource Card}" Padding="12" HeightRequest="76">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnNavigate" CommandParameter="//position" />
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Border WidthRequest="40" HeightRequest="40" BackgroundColor="{StaticResource BlueLight}"
+                                    StrokeThickness="0" StrokeShape="RoundRectangle 12" VerticalOptions="Center">
+                                <controls:IconView Kind="pin" Size="20" IconColor="{StaticResource Blue}" />
+                            </Border>
+                            <Label Grid.Column="1" Text="Ma&#10;position" Style="{StaticResource CardTitle}" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Row="1" Style="{StaticResource Card}" Padding="12" HeightRequest="76">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnNavigate" CommandParameter="//contacts" />
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Border WidthRequest="40" HeightRequest="40" BackgroundColor="{StaticResource GreenLight}"
+                                    StrokeThickness="0" StrokeShape="RoundRectangle 12" VerticalOptions="Center">
+                                <controls:IconView Kind="phone" Size="20" IconColor="{StaticResource Green}" />
+                            </Border>
+                            <Label Grid.Column="1" Text="Contacts&#10;sécurité" Style="{StaticResource CardTitle}" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource Card}" Padding="12" HeightRequest="76">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnNavigate" CommandParameter="//map" />
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Border WidthRequest="40" HeightRequest="40" BackgroundColor="{StaticResource OrangeLight}"
+                                    StrokeThickness="0" StrokeShape="RoundRectangle 12" VerticalOptions="Center">
+                                <controls:IconView Kind="map" Size="20" IconColor="{StaticResource Orange}" />
+                            </Border>
+                            <Label Grid.Column="1" Text="Zones du&#10;campus" Style="{StaticResource CardTitle}" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- À proximité -->
+                <Border Style="{StaticResource Card}" Padding="14,14" Margin="0,4,0,0">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnNavigate" CommandParameter="//map" />
+                    </Border.GestureRecognizers>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Spacing="6">
+                            <Border Style="{StaticResource Badge}" BackgroundColor="{StaticResource GreenLight}">
+                                <Label Text="À PROXIMITÉ" Style="{StaticResource BadgeText}" TextColor="{StaticResource Green}" />
+                            </Border>
+                            <Label Text="Aucun incident signalé à proximité." FontSize="15" FontAttributes="Bold" TextColor="{StaticResource Navy}" />
+                            <Label Text="Votre zone semble actuellement calme." FontSize="13" TextColor="{StaticResource Slate}" />
+                        </VerticalStackLayout>
+                        <controls:IconView Grid.Column="1" Kind="chevron-right" Size="20" IconColor="{StaticResource Slate}" />
+                    </Grid>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <controls:BottomNavBar Grid.Row="2" Active="home" />
+    </Grid>
+</ContentPage>

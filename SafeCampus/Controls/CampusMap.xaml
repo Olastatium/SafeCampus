@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Border x:Class="SafeCampus.Controls.CampusMap"
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:controls="clr-namespace:SafeCampus.Controls"
+        BackgroundColor="{StaticResource MapBg}"
+        Stroke="{StaticResource Line}"
+        StrokeThickness="1.5"
+        StrokeShape="RoundRectangle 22"
+        WidthRequest="325"
+        HeightRequest="305"
+        HorizontalOptions="Center">
+
+    <AbsoluteLayout>
+
+        <!-- Routes -->
+        <Path AbsoluteLayout.LayoutBounds="0,0,325,305"
+              Aspect="None" Stroke="{StaticResource MapRoad}" StrokeThickness="6" StrokeLineCap="Round"
+              Data="M14,50 C22,42 30,40 50,40 L115,44 C150,50 175,20 210,20 C240,20 280,25 300,40 C310,50 315,62 316,72" />
+        <Path x:Name="BottomRoad" AbsoluteLayout.LayoutBounds="0,0,325,305"
+              Aspect="None" Stroke="{StaticResource MapRoad}" StrokeThickness="6" StrokeLineCap="Round"
+              Data="M4,244 C15,238 25,234 35,232 L135,255 C175,258 210,220 260,210 C290,205 315,225 326,248" />
+
+        <!-- Bâtiments -->
+        <Border AbsoluteLayout.LayoutBounds="32,27,77,69" Style="{StaticResource Building}">
+            <Label Text="Bibliothèque" Style="{StaticResource BuildingLabel}" />
+        </Border>
+        <Border x:Name="BlocB" AbsoluteLayout.LayoutBounds="140,20,67,50" Style="{StaticResource Building}">
+            <Label Text="Bloc B" Style="{StaticResource BuildingLabel}" />
+        </Border>
+        <Border AbsoluteLayout.LayoutBounds="234,24,70,62" Style="{StaticResource Building}">
+            <Label Text="Administration" Style="{StaticResource BuildingLabel}" />
+        </Border>
+        <Border AbsoluteLayout.LayoutBounds="176,111,88,65" Style="{StaticResource Building}">
+            <Label Text="Amphi" Style="{StaticResource BuildingLabel}" />
+        </Border>
+        <Border AbsoluteLayout.LayoutBounds="65,134,80,51" Style="{StaticResource Building}">
+            <Label Text="RU" Style="{StaticResource BuildingLabel}" />
+        </Border>
+        <Border AbsoluteLayout.LayoutBounds="33,208,104,51" Style="{StaticResource Building}">
+            <Label Text="Résidence" Style="{StaticResource BuildingLabel}" />
+        </Border>
+        <Border AbsoluteLayout.LayoutBounds="223,218,78,50" Style="{StaticResource Building}">
+            <Label Text="Parking" Style="{StaticResource BuildingLabel}" />
+        </Border>
+
+        <!-- Repères : variante "zones" -->
+        <AbsoluteLayout x:Name="ZoneMarkers" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" InputTransparent="True">
+            <Grid AbsoluteLayout.LayoutBounds="266.5,92.5,23,23">
+                <Ellipse Stroke="{StaticResource Red}" StrokeThickness="1.2" />
+                <Ellipse Fill="{StaticResource Red}" WidthRequest="11" HeightRequest="11" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Grid>
+            <Grid AbsoluteLayout.LayoutBounds="249.5,231.5,23,23">
+                <Ellipse Stroke="{StaticResource Red}" StrokeThickness="1.2" />
+                <Ellipse Fill="{StaticResource Red}" WidthRequest="11" HeightRequest="11" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Grid>
+            <Grid AbsoluteLayout.LayoutBounds="100.5,241.5,21,21">
+                <Ellipse Stroke="{StaticResource Amber}" StrokeThickness="1.2" />
+                <Ellipse Fill="{StaticResource Amber}" WidthRequest="10" HeightRequest="10" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Grid>
+        </AbsoluteLayout>
+
+        <!-- Repères : variante "position" -->
+        <AbsoluteLayout x:Name="PositionMarkers" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" InputTransparent="True" IsVisible="False">
+            <Grid AbsoluteLayout.LayoutBounds="269,68,23,23">
+                <Ellipse Stroke="{StaticResource Red}" StrokeThickness="1.2" />
+                <Ellipse Fill="{StaticResource Red}" WidthRequest="11" HeightRequest="11" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Grid>
+            <Grid AbsoluteLayout.LayoutBounds="273.5,222.5,23,23">
+                <Ellipse Stroke="{StaticResource Red}" StrokeThickness="1.2" />
+                <Ellipse Fill="{StaticResource Red}" WidthRequest="11" HeightRequest="11" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Grid>
+            <Grid AbsoluteLayout.LayoutBounds="100.5,241.5,21,21">
+                <Ellipse Stroke="{StaticResource Amber}" StrokeThickness="1.2" />
+                <Ellipse Fill="{StaticResource Amber}" WidthRequest="10" HeightRequest="10" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Grid>
+        </AbsoluteLayout>
+
+        <!-- Ma position (point bleu avec halo blanc) -->
+        <Grid AbsoluteLayout.LayoutBounds="174,155,32,32">
+            <Ellipse Fill="White" Stroke="{StaticResource Line}" StrokeThickness="1" />
+            <Ellipse Fill="{StaticResource Blue}" WidthRequest="19" HeightRequest="19" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+
+        <!-- Carte "Votre position actuelle" (variante position) -->
+        <Border x:Name="PositionCard" AbsoluteLayout.LayoutBounds="13,293,299,67" IsVisible="False"
+                Style="{StaticResource Card}" StrokeShape="RoundRectangle 20" Padding="16,0">
+            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalOptions="Center">
+                <controls:IconView Kind="pin" Size="24" IconColor="{StaticResource Blue}" VerticalOptions="Center" />
+                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                    <Label Text="Votre position actuelle" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource Navy}" />
+                    <Label Text="Bloc B - Campus principal" FontSize="13" TextColor="{StaticResource Slate}" />
+                </VerticalStackLayout>
+                <Border Grid.Column="2" Style="{StaticResource Pill}" BackgroundColor="{StaticResource GreenLight}" Padding="12,6" VerticalOptions="Center">
+                    <Label Text="PRÉCISE" Style="{StaticResource BadgeText}" TextColor="{StaticResource Green}" />
+                </Border>
+            </Grid>
+        </Border>
+    </AbsoluteLayout>
+</Border>

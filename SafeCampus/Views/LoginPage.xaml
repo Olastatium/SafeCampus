@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SafeCampus.Views.LoginPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SafeCampus.Controls"
+             Title="Connexion">
+
+    <Grid RowDefinitions="111,*">
+
+        <!-- Bandeau sombre -->
+        <Grid BackgroundColor="{StaticResource Navy}" Padding="25,0,0,0">
+            <HorizontalStackLayout Spacing="14" VerticalOptions="Start" Margin="0,22,0,0">
+                <controls:IconView Kind="shield-check" Size="34" IconColor="White" VerticalOptions="Center" />
+                <Label Text="SafeCampus" FontSize="21" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="22,30,22,24" Spacing="0">
+
+                <Label Text="Bienvenue sur SafeCampus" Style="{StaticResource H1}" />
+                <Label Text="Connectez-vous pour accéder aux services&#10;de sécurité du campus."
+                       Style="{StaticResource Muted}" Margin="0,6,0,0" />
+
+                <controls:InputField Caption="Adresse e-mail" Text="etudiant@campus.cm"
+                                     Keyboard="Email" Margin="0,26,0,0" />
+                <controls:InputField Caption="Mot de passe" Text="12345678"
+                                     IsPassword="True" Margin="0,14,0,0" />
+
+                <Grid ColumnDefinitions="*,Auto" Margin="0,10,0,0">
+                    <HorizontalStackLayout Spacing="2" VerticalOptions="Center">
+                        <CheckBox Color="{StaticResource CheckGrey}" VerticalOptions="Center" />
+                        <Label Text="Se souvenir de moi" FontSize="14" TextColor="{StaticResource SlateDark}" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <Label Grid.Column="1" Text="Mot de passe oublié ?" FontSize="13" FontAttributes="Bold"
+                           TextColor="{StaticResource Blue}" VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnForgotTapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+
+                <Button Text="Se connecter" Style="{StaticResource PrimaryButton}"
+                        Margin="0,22,0,0" Clicked="OnLoginClicked" />
+
+                <!-- Séparateur "ou" -->
+                <Grid Margin="0,14,0,14" HeightRequest="22">
+                    <BoxView HeightRequest="1.5" Color="{StaticResource Line}" VerticalOptions="Center" />
+                    <Label Text="ou" FontSize="13" TextColor="{StaticResource Slate}" BackgroundColor="{StaticResource Bg}"
+                           Padding="10,0" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Grid>
+
+                <Button Text="Créer un compte" Style="{StaticResource OutlineButton}" Clicked="OnRegisterClicked" />
+
+                <Label Text="Vos données sont utilisées uniquement pour&#10;les services de sécurité de SafeCampus."
+                       FontSize="12" TextColor="{StaticResource Slate}" HorizontalTextAlignment="Center" Margin="0,34,0,0" />
+
+                <HorizontalStackLayout Spacing="8" HorizontalOptions="Center" Margin="0,22,0,0">
+                    <controls:IconView Kind="shield-check" Size="20" IconColor="{StaticResource Green}" VerticalOptions="Center" />
+                    <Label Text="Accès protégé" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource Green}" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

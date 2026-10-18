@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SafeCampus.Views.PositionPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SafeCampus.Controls"
+             Title="Ma position">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <controls:PageHeader Title="Ma position"
+                             Subtitle="Visualisez votre position sur le campus."
+                             Tag="Géolocalisation" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="18,16,18,20" Spacing="14">
+
+                <controls:CampusMap Variant="position" />
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="14" Margin="4,0,4,0">
+                    <Border Style="{StaticResource OutlineBtn}">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnRecenterTapped" />
+                        </Border.GestureRecognizers>
+                        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
+                            <controls:IconView Kind="pin" Size="20" IconColor="{StaticResource Navy}" />
+                            <Label Text="Recentrer" FontSize="17" FontAttributes="Bold" TextColor="{StaticResource Navy}" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="1" Style="{StaticResource FilledBtn}">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnReportsTapped" />
+                        </Border.GestureRecognizers>
+                        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
+                            <controls:IconView Kind="alert" Size="18" IconColor="White" />
+                            <Label Text="Signalements" FontSize="17" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </Border>
+                </Grid>
+
+                <Label Text="Légende" FontSize="17" FontAttributes="Bold" TextColor="{StaticResource Navy}" Margin="4,4,0,0" />
+
+                <HorizontalStackLayout Spacing="10" Margin="4,0,0,0">
+                    <Border Style="{StaticResource Pill}" BackgroundColor="{StaticResource BlueLight}"
+                            Stroke="{StaticResource Blue}" StrokeThickness="1.5">
+                        <Label Text="Ma position" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource Blue}" />
+                    </Border>
+                    <Border Style="{StaticResource Pill}" BackgroundColor="{StaticResource RedLight}">
+                        <Label Text="Incident" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource Red}" />
+                    </Border>
+                    <Border Style="{StaticResource Pill}" BackgroundColor="{StaticResource OrangeLight}">
+                        <Label Text="Vigilance" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource Orange}" />
+                    </Border>
+                </HorizontalStackLayout>
+
+                <VerticalStackLayout Spacing="4" Margin="4,6,4,0">
+                    <Label Text="Conseil" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource Slate}" />
+                    <Label Text="La carte est simplifiée pour réduire la charge&#10;et favoriser une consultation rapide."
+                           FontSize="14" TextColor="{StaticResource SlateDark}" />
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <controls:BottomNavBar Grid.Row="2" Active="map" />
+    </Grid>
+</ContentPage>

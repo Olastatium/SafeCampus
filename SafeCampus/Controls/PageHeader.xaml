@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView x:Class="SafeCampus.Controls.PageHeader"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SafeCampus.Controls">
+    <Grid BackgroundColor="White" Padding="22,16,22,12" ColumnDefinitions="*,Auto">
+
+        <VerticalStackLayout Spacing="2" VerticalOptions="Center">
+            <HorizontalStackLayout Spacing="12">
+                <controls:IconView x:Name="BackIcon"
+                                   Kind="arrow-left"
+                                   Size="22"
+                                   IconColor="{StaticResource Navy}"
+                                   IsVisible="False"
+                                   VerticalOptions="Center">
+                    <controls:IconView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackTapped" />
+                    </controls:IconView.GestureRecognizers>
+                </controls:IconView>
+                <Label x:Name="TitleLabel" Style="{StaticResource H1}" />
+            </HorizontalStackLayout>
+            <Label x:Name="SubtitleLabel" Style="{StaticResource Muted}" IsVisible="False" />
+            <Label x:Name="TagLabel"
+                   FontSize="11"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource Slate}"
+                   IsVisible="False" />
+        </VerticalStackLayout>
+
+        <Grid x:Name="Bell" Grid.Column="1" VerticalOptions="Start" WidthRequest="34" HeightRequest="34">
+            <controls:IconView Kind="bell" Size="26" IconColor="{StaticResource Navy}" />
+            <BoxView Color="{StaticResource Red}"
+                     WidthRequest="9" HeightRequest="9" CornerRadius="5"
+                     HorizontalOptions="End" VerticalOptions="Start"
+                     Margin="0,2,3,0" />
+        </Grid>
+    </Grid>
+</ContentView>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Pages : fond gris très clair, pas de barre de navigation Shell -->
+    <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor" Value="{StaticResource Bg}" />
+        <Setter Property="Shell.NavBarIsVisible" Value="False" />
+        <Setter Property="Shell.TabBarIsVisible" Value="False" />
+    </Style>
+
+    <!-- Carte blanche arrondie -->
+    <Style x:Key="Card" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="Stroke" Value="{StaticResource Line}" />
+        <Setter Property="StrokeThickness" Value="1.5" />
+        <Setter Property="StrokeShape">
+            <Setter.Value><RoundRectangle CornerRadius="18" /></Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Champ de saisie -->
+    <Style x:Key="InputBorder" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="Stroke" Value="{StaticResource Line}" />
+        <Setter Property="StrokeThickness" Value="1.5" />
+        <Setter Property="Padding" Value="14,0" />
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="StrokeShape">
+            <Setter.Value><RoundRectangle CornerRadius="14" /></Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Boutons -->
+    <Style x:Key="PrimaryButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource Blue}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <Style x:Key="OutlineButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="TextColor" Value="{StaticResource Navy}" />
+        <Setter Property="BorderColor" Value="{StaticResource Line}" />
+        <Setter Property="BorderWidth" Value="1.5" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <!-- Boutons "Border" avec icône -->
+    <Style x:Key="OutlineBtn" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="Stroke" Value="{StaticResource Line}" />
+        <Setter Property="StrokeThickness" Value="1.5" />
+        <Setter Property="Padding" Value="14,0" />
+        <Setter Property="HeightRequest" Value="46" />
+        <Setter Property="StrokeShape">
+            <Setter.Value><RoundRectangle CornerRadius="14" /></Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="FilledBtn" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="{StaticResource Blue}" />
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="Padding" Value="14,0" />
+        <Setter Property="HeightRequest" Value="46" />
+        <Setter Property="StrokeShape">
+            <Setter.Value><RoundRectangle CornerRadius="14" /></Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Pastilles / badges -->
+    <Style x:Key="Pill" TargetType="Border">
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="Padding" Value="14,9" />
+        <Setter Property="StrokeShape">
+            <Setter.Value><RoundRectangle CornerRadius="20" /></Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Badge" TargetType="Border">
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="Padding" Value="10,4" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="StrokeShape">
+            <Setter.Value><RoundRectangle CornerRadius="12" /></Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BadgeText" TargetType="Label">
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <!-- Bâtiments de la carte -->
+    <Style x:Key="Building" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="{StaticResource BuildingFill}" />
+        <Setter Property="Stroke" Value="{StaticResource BuildingLine}" />
+        <Setter Property="StrokeThickness" Value="1.5" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="StrokeShape">
+            <Setter.Value><RoundRectangle CornerRadius="12" /></Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BuildingLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="9" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource SlateDark}" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="LineBreakMode" Value="NoWrap" />
+    </Style>
+
+    <!-- Textes -->
+    <Style x:Key="H1" TargetType="Label">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource Navy}" />
+    </Style>
+
+    <Style x:Key="H2" TargetType="Label">
+        <Setter Property="FontSize" Value="19" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource Navy}" />
+    </Style>
+
+    <Style x:Key="Muted" TargetType="Label">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor" Value="{StaticResource Slate}" />
+    </Style>
+
+    <Style x:Key="Caption" TargetType="Label">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource Slate}" />
+    </Style>
+
+    <Style x:Key="CardTitle" TargetType="Label">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource Navy}" />
+    </Style>
+
+</ResourceDictionary>
